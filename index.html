@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajshahi Sports Live</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1420;
+      color: white;
+    }
+
+    header {
+      background: #111f2e;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #16a34a;
+    }
+
+    header h1 {
+      color: #22c55e;
+      font-size: 25px;
+    }
+
+    header p {
+      color: #aaa;
+      margin-top: 7px;
+      font-size: 12px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      padding: 15px 5px;
+      background: #162536;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+      color: #22c55e;
+    }
+
+    .match {
+      background: #17283a;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #294057;
+    }
+
+    .live {
+      color: #ff5555;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .teams {
+      display: flex;
+      justify-content: space-between;
+      margin: 22px 0;
+      gap: 10px;
+    }
+
+    .score {
+      color: #22c55e;
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .details {
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #999;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>RAJSHAHI SPORTS LIVE</h1>
+    <p>YOUR LOCAL CRICKET LIVE SCORE</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Live Score</a>
+    <a href="#">Matches</a>
+    <a href="#">Teams</a>
+    <a href="#">Results</a>
+  </nav>
+
+  <main class="container">
+
+    <h2 class="section-title">🏏 Live Matches</h2>
+
+    <div class="match">
+      <div class="live">● LIVE MATCH</div>
+
+      <div class="teams">
+        <div>
+          <h3>Rajshahi Tigers</h3>
+          <div class="score">124/3</div>
+          <p class="details">15.2 Overs</p>
+        </div>
+
+        <div style="text-align:right">
+          <h3>City Strikers</h3>
+          <p class="details">Yet to bat</p>
+        </div>
+      </div>
+
+      <p class="details">
+        Rajshahi Premier League | 1st Innings
+      </p>
+    </div>
+
+    <h2 class="section-title">📅 Upcoming Matches</h2>
+
+    <div class="match">
+      <h3>Rajshahi Warriors vs Green City XI</h3>
+      <p class="details">Match schedule coming soon</p>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 Rajshahi Sports Live
+    <p>Made for Local Cricket Fans</p>
+  </footer>
+
+</body>
+</html>
