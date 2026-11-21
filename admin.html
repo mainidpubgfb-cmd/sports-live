@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSL Admin Panel</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:20px;
+  background:#0b1420;
+  color:white;
+  
+  font-family:Arial,sans-serif;
+}
+.container{max-width:600px;margin:auto}
+header{
+  background:#17283a;
+  padding:20px;
+  border-radius:12px;
+  border-left:4px solid #22c55e;
+}
+h1{color:#22c55e;font-size:23px}
+.card{
+  background:#17283a;
+  padding:20px;
+  margin-top:20px;
+  border-radius:12px;
+}
+input,select{
+  width:100%;
+  padding:13px;
+  margin:8px 0 15px;
+  background:#0b1420;
+  border:1px solid #38506a;
+  border-radius:7px;
+  color:white;
+  font-size:16px;
+}
+button{
+  padding:16px;
+  border:0;
+  border-radius:8px;
+  background:#22c55e;
+  color:#07130c;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+.score{
+  font-size:35px;
+  color:#22c55e;
+  margin:15px 0;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.grid button{background:#263c51;color:white}
+.grid .wicket{background:#dc2626}
+.small{color:#aaa;font-size:13px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<h1>🏏 RSL ADMIN</h1>
+<p>Rajshahi Sports Live</p>
+<p class="small">Match Management Dashboard</p>
+</header>
+
+<div class="card">
+<h2>Create New Match</h2>
+
+<label>Team A</label>
+<input id="teamA" placeholder="Enter first team">
+
+<label>Team B</label>
+<input id="teamB" placeholder="Enter second team">
+
+<label>Total Overs</label>
+<select id="totalOvers">
+<option>10</option>
+<option selected>20</option>
+<option>30</option>
+<option>50</option>
+</select>
+
+<button onclick="createMatch()">Create Match</button>
+<p id="message" class="small"></p>
+</div>
+
+<div class="card">
+<h2>Live Scoring</h2>
+<p id="teams" class="small">Create a match first</p>
+
+<div class="score" id="score">0/0</div>
+<p id="overs">Overs: 0.0</p>
+
+<div class="grid">
+<button onclick="addBall(0)">0</button>
+<button onclick="addBall(1)">1</button>
+<button onclick="addBall(2)">2</button>
+<button onclick="addBall(3)">3</button>
+<button onclick="addBall(4)">4</button>
+<button onclick="addBall(6)">6</button>
+<button class="wicket" onclick="addBall('W')">W</button>
+<button onclick="addExtra()">WD</button>
+</div>
+
+<p class="small">WD = Wide (1 extra run)</p>
+<button onclick="resetScore()" style="margin-top:15px;background:#64748b;color:white;width:100%">
+Reset Demo Score
+</button>
+</div>
+
+</div>
+
+<script>
+let runs=0;
+let wickets=0;
+let balls=0;
+let maxOvers=20;
+let started=false;
+
+function createMatch(){
+ const a=document.getElementById("teamA").value.trim();
+ const b=document.getElementById("teamB").value.trim();
+
+ if(!a || !b){
+  document.getElementById("message").innerText=
+  "Please enter both team names.";
+  return;
+ }
+
+ maxOvers=Number(document.getElementById("totalOvers").value);
+ resetScore();
+ started=true;
+ document.getElementById("teams").innerText=a+" vs "+b;
+ document.getElementById("message").innerText="Demo match created!";
+}
+
+function addBall(value){
+ if(!started) return alert("Create a match first!");
+ if(balls>=maxOvers*6 || wickets>=10) return;
+
+ if(value==="W"){
+  wickets++;
+ }else{
+  runs+=value;
+ }
+ balls++;
+ updateScore();
+}
+
+function addExtra(){
+ if(!started) return alert("Create a match first!");
+ if(balls>=maxOvers*6) return;
+ runs++;
+ updateScore();
+}
+
+function updateScore(){
+ document.getElementById("score").innerText=
+ runs+"/"+wickets;
+
+ document.getElementById("overs").innerText=
+ "Overs: "+Math.floor(balls/6)+"."+(balls%6);
+}
+
+function resetScore(){
+ runs=0;
+ wickets=0;
+ balls=0;
+ updateScore();
+}
+</script>
+</body>
+</html>
